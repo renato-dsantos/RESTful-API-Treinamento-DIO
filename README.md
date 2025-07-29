@@ -4,15 +4,15 @@ Treinamento RESTFUL API da DIO
 
 ## Diagrama de classes
 
-````memaid
+````mermaid
 
 classDiagram
     class User {
-        +String name
-        +Account account
-        +Card card
-        +List~Feature~ features
-        +List~News~ news
+        -String name
+        -Account account
+        -Feature[] features
+        -Card card
+        -News[] news
     }
 
     class Account {
@@ -37,8 +37,8 @@ classDiagram
         +String description
     }
 
-    User --> Account
-    User --> Card
-    User --> "0..*" Feature
-    User --> "0..*" News
+    User "1" *-- "1" Account
+    User "1" *-- "N" Feature
+    User "1" *-- "1" Card
+    User "1" *-- "N" News
 ```
